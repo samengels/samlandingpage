@@ -419,7 +419,7 @@ const CARDS = [
     designation: "Marketing Director",
     content: (
       <p>
-        I had <Highlight>no idea AI was capable</Highlight> of so much! This course opened my eyes to possibilities I never imagined. Now I'm automating tasks that used to take hours.
+        I had <Highlight>no idea AI was capable</Highlight> of so much! This course opened my eyes to possibilities I never imagined. Now I&apos;m automating tasks that used to take hours.
       </p>
     ),
   },
@@ -439,7 +439,7 @@ const CARDS = [
     designation: "Project Manager",
     content: (
       <p>
-        The course completely changed how I work. I was <Highlight>amazed by what AI could do</Highlight> and how easy it was to implement. My team thinks I'm a tech genius now!
+        The course completely changed how I work. I was <Highlight>amazed by what AI could do</Highlight> and how easy it was to implement. My team thinks I&apos;m a tech genius now!
       </p>
     ),
   },
@@ -594,7 +594,7 @@ const PeopleGrid = () => {
 
   useEffect(() => {
     if (!mounted) return;
-    
+
     let interval: NodeJS.Timeout;
 
     if (!isHovered) {
@@ -604,7 +604,7 @@ const PeopleGrid = () => {
     }
 
     return () => clearInterval(interval);
-  }, [isHovered, mounted, people.length]);
+  }, [isHovered, mounted]);
 
   useEffect(() => {
     if (!mounted) return;

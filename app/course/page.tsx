@@ -1,6 +1,5 @@
 import { NewsletterSignup } from "@/components/newsletter-signup";
 import { Button } from "@/components/button";
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Balancer from "react-wrap-balancer";
@@ -24,7 +23,7 @@ export default function CoursePage() {
       {/* Course Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
         <div>
-          <h2 className="text-2xl md:text-3xl text-white font-semibold mb-6">What You'll Learn</h2>
+          <h2 className="text-2xl md:text-3xl text-white font-semibold mb-6">What You&apos;ll Learn</h2>
           <ul className="space-y-4">
             {[
               "Practical AI applications that solve real-world problems",

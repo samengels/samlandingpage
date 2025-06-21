@@ -47,7 +47,7 @@ export function FrequentlyAskedQuestions() {
         </h2>
       </div>
       <p className="max-w-lg text-sm text-center mx-auto mt-4 text-neutral-400 px-4 md:px-0">
-        Got questions about our AI course? We've answered the most common questions to help you understand how our program will help you harness the power of AI without technical expertise.
+        Got questions about our AI course? We&apos;ve answered the most common questions to help you understand how our program will help you harness the power of AI without technical expertise.
       </p>
       <div className="mt-10 md:mt-20 max-w-3xl mx-auto divide-y divide-neutral-800">
         {FAQs.map((faq, index) => (

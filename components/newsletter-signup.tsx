@@ -35,7 +35,7 @@ export const NewsletterSignup = () => {
       setStatus("success");
       setMessage("Thanks for subscribing! Please check your email to confirm.");
       setEmail("");
-    } catch (error) {
+    } catch {
       setStatus("error");
       setMessage("Something went wrong. Please try again later.");
     }

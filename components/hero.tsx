@@ -6,17 +6,12 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Balancer from "react-wrap-balancer";
 import Link from "next/link";
 import { Button } from "./button";
-import { GlowingEffect } from "./ui/glowing-effect";
 
 export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(
-    null
-  ) as React.RefObject<HTMLDivElement>;
   const parentRef = useRef<HTMLDivElement>(
     null
   ) as React.RefObject<HTMLDivElement>;
@@ -60,7 +55,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-xl md:text-3xl mt-2 font-medium text-neutral-400"
         >
-          For Smart People Who Didn't Grow Up With It
+          For Smart People Who Didn&apos;t Grow Up With It
         </motion.div>
       </div>
       <motion.p
