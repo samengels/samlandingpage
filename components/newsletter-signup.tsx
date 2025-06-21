@@ -20,7 +20,7 @@ export const NewsletterSignup = () => {
     setStatus("loading");
     
     try {
-      const response = await fetch('https://mcp.21st.dev/api/newsletter/subscribe', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
