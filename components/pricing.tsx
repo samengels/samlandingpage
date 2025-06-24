@@ -4,6 +4,7 @@ import { IconCheck, IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { IconGift } from "@/icons/gift";
+import { motion } from "framer-motion";
 
 import { useEffect, useState } from "react";
 
@@ -74,7 +75,7 @@ const plans: Array<Plan> = [
     name: "Pro ✦",
     shortDescription: "Lifetime Deal",
     badge: "BUSY CREATORS' CHOICE",
-    price: 189,
+    price: 299,
     originalPrice: 546,
     period: "one-time",
     features: [
@@ -99,7 +100,7 @@ const plans: Array<Plan> = [
     id: planType.yearly,
     name: "Pro ✦",
     shortDescription: "1 Year Access",
-    price: 69,
+    price: 249,
     originalPrice: 179,
     period: "one-time",
     features: [
@@ -294,41 +295,78 @@ export function Pricing() {
       id="pricing"
       className="relative isolate w-full overflow-hidden px-4 py-16 md:py-40 pt-10 md:pt-60 lg:px-4"
     >
+      {/* Animated background effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(46,185,223,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(46,185,223,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black_40%,transparent_100%)]" />
+      
+      {/* Floating orb effects */}
+      <motion.div
+        className="absolute w-96 h-96 bg-gradient-to-r from-[#2EB9DF]/15 to-[#9E00FF]/15 rounded-full blur-3xl"
+        animate={{
+          x: [0, -80, 0],
+          y: [0, 60, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{
+          top: "30%",
+          left: "20%",
+        }}
+      />
+
       {!isMobile && (
         <div className="pt-32 md:pt-48 mt-[600px]">
           <BackgroundShape />
         </div>
       )}
+      
       <div
         className={cn(
           "z-20",
           isMobile ? "flex flex-col mt-0 relative" : "absolute inset-0 mt-80"
         )}
       >
-        <div
-          className={cn(
-            "relative z-50 mx-auto mb-4",
-            isMobile ? "w-full" : "max-w-4xl text-center"
-          )}
+        {/* Glass morphism container for pricing header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 bg-black/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 mx-auto mb-12 max-w-4xl shadow-2xl shadow-[#2EB9DF]/5"
         >
-          <h2
+          <div
             className={cn(
-              "inline-block text-3xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] ",
-              "bg-clip-text text-transparent"
+              "relative z-50 mx-auto mb-4 text-center"
             )}
           >
-            Choose Your Plan
-          </h2>
-        </div>
-        <p
-          className={cn(
-            "text-sm text-neutral-400 mt-4 px-4",
-            isMobile ? "w-full" : "max-w-lg text-center mx-auto"
-          )}
-        >
-          Simplify crypto investing, trading, and portfolio management with
-          cutting-edge tools designed for everyone—from beginners to pros.
-        </p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-4xl md:text-6xl font-bold text-white mb-4"
+            >
+              Choose Your Plan
+            </motion.h2>
+          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className={cn(
+              "text-lg md:text-xl text-white/70 leading-relaxed mt-4 px-4 text-center max-w-2xl mx-auto"
+            )}
+          >
+            Simplify crypto investing, trading, and portfolio management with{" "}
+            <span className="text-[#2EB9DF] font-semibold">cutting-edge tools</span> designed for everyone—from{" "}
+            <span className="text-[#9E00FF] font-semibold">beginners to pros</span>.
+          </motion.p>
+        </motion.div>
+        
         <div className="mx-auto mt-12 md:mt-20">
           <PricingList />
         </div>

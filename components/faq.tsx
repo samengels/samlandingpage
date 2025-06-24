@@ -31,35 +31,92 @@ const FAQs = [
       "Absolutely! All students get access to our community forum where they can ask questions, share ideas, and connect with other learners. We also offer monthly Q&A sessions with our instructors to address specific questions about applying AI to your unique situations.",
   },
 ];
+
 export function FrequentlyAskedQuestions() {
   const [open, setOpen] = React.useState<string | null>(null);
 
   return (
-    <div className="w-full max-w-7xl mx-auto my-10 md:my-20 py-10 md:py-20 px-4 md:px-8">
-      <div className="text-balance relative z-20 mx-auto mb-4 max-w-4xl text-center">
-        <h2
-          className={cn(
-            "inline-block text-3xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]",
-            "bg-clip-text text-transparent"
-          )}
+    <div className="w-full max-w-7xl mx-auto my-10 md:my-20 py-16 md:py-32 px-4 md:px-8 relative overflow-hidden">
+      {/* Animated background effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(46,185,223,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(46,185,223,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_50%,black_40%,transparent_100%)]" />
+      
+      {/* Floating orb effects */}
+      <motion.div
+        className="absolute w-72 h-72 bg-gradient-to-r from-[#2EB9DF]/8 to-[#9E00FF]/8 rounded-full blur-3xl"
+        animate={{
+          x: [0, 80, 0],
+          y: [0, -60, 0],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 16,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{
+          top: "15%",
+          right: "5%",
+        }}
+      />
+
+      {/* Main content with glass container */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 bg-black/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl shadow-[#2EB9DF]/5"
+      >
+        <div className="text-balance relative z-20 mx-auto mb-8 max-w-4xl text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl md:text-6xl font-bold text-white mb-4"
+          >
+            Let's Answer Your Questions
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="max-w-2xl text-lg md:text-xl text-center mx-auto text-white/70 leading-relaxed"
+          >
+            Got questions about our AI course? We've answered the most common questions to help you understand how our program will help you{" "}
+            <span className="text-[#2EB9DF] font-semibold">harness the power of AI</span> without{" "}
+            <span className="text-[#9E00FF] font-semibold">technical expertise</span>.
+          </motion.p>
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-12 md:mt-16 max-w-4xl mx-auto"
         >
-          Let&apos;s Answer Your Questions
-        </h2>
-      </div>
-      <p className="max-w-lg text-sm text-center mx-auto mt-4 text-neutral-400 px-4 md:px-0">
-        Got questions about our AI course? We&apos;ve answered the most common questions to help you understand how our program will help you harness the power of AI without technical expertise.
-      </p>
-      <div className="mt-10 md:mt-20 max-w-3xl mx-auto divide-y divide-neutral-800">
-        {FAQs.map((faq, index) => (
-          <FAQItem
-            key={index}
-            question={faq.question}
-            answer={faq.answer}
-            open={open}
-            setOpen={setOpen}
-          />
-        ))}
-      </div>
+          <div className="space-y-4">
+            {FAQs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <FAQItem
+                  question={faq.question}
+                  answer={faq.answer}
+                  open={open}
+                  setOpen={setOpen}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
@@ -79,7 +136,7 @@ const FAQItem = ({
 
   return (
     <motion.div
-      className="cursor-pointer py-4 md:py-6"
+      className="cursor-pointer bg-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-black/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#2EB9DF]/10"
       onClick={() => {
         if (isOpen) {
           setOpen(null);
@@ -87,10 +144,12 @@ const FAQItem = ({
           setOpen(question);
         }
       }}
+      whileHover={{ scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
     >
       <div className="flex items-start justify-between">
-        <div className="pr-8 md:pr-12">
-          <h3 className="text-base md:text-lg font-medium text-neutral-200">
+        <div className="pr-8 md:pr-12 flex-1">
+          <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
             {question}
           </h3>
           <AnimatePresence mode="wait">
@@ -99,28 +158,25 @@ const FAQItem = ({
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-                className="overflow-hidden text-sm md:text-base text-neutral-400 mt-2"
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="overflow-hidden"
               >
-                <p>{answer}</p>
+                <p className="text-base md:text-lg text-white/70 leading-relaxed pt-2">
+                  {answer}
+                </p>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-        <div className="relative mr-2 md:mr-4 mt-1 h-5 w-5 md:h-6 md:w-6 flex-shrink-0">
-          <motion.div
-            animate={{
-              scale: isOpen ? [0, 1] : [1, 0, 1],
-              rotate: isOpen ? 90 : 0,
-              marginLeft: isOpen ? "1.5rem" : "0rem",
-            }}
-            initial={{ scale: 0 }}
-            exit={{ scale: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <IconArrowRight className="absolute inset-0 h-5 w-5 md:h-6 md:w-6 transform text-white-500" />
-          </motion.div>
-        </div>
+        <motion.div
+          className="relative mt-1 h-6 w-6 flex-shrink-0"
+          animate={{
+            rotate: isOpen ? 90 : 0,
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <IconArrowRight className="h-6 w-6 text-[#2EB9DF]" />
+        </motion.div>
       </div>
     </motion.div>
   );

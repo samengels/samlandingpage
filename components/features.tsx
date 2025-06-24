@@ -24,21 +24,79 @@ export function Features() {
   return (
     <div
       id="product"
-      className="w-full max-w-7xl mx-auto py-4 px-4 md:px-8 md:my-20 md:py-20"
+      className="w-full max-w-7xl mx-auto py-8 px-4 md:px-8 md:my-20 md:py-32 relative overflow-hidden"
     >
-      <div className="text-balance relative z-20 mx-auto mb-4 max-w-4xl text-center text-lg font-semibold tracking-tight text-neutral-300 md:text-3xl">
-        <h2
-          className={cn(
-            "inline-block text-3xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]",
-            "bg-clip-text text-transparent"
-          )}
-        >
-          Features & Benefits
-        </h2>
-      </div>
-      <p className="max-w-lg text-sm text-center mx-auto mt-4 text-neutral-400">
-        Discover powerful AI tools that simplify complex tasks and help you work smarter, not harder—designed specifically for people who want results without the tech jargon.
-      </p>
+      {/* Animated background effects similar to hero */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(46,185,223,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(46,185,223,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black_40%,transparent_100%)]" />
+      
+      {/* Floating orb effects */}
+      <motion.div
+        className="absolute w-64 h-64 bg-gradient-to-r from-[#2EB9DF]/10 to-[#9E00FF]/10 rounded-full blur-3xl"
+        animate={{
+          x: [0, 60, 0],
+          y: [0, -40, 0],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{
+          top: "10%",
+          right: "10%",
+        }}
+      />
+      
+      <motion.div
+        className="absolute w-48 h-48 bg-gradient-to-r from-[#9E00FF]/8 to-[#2EB9DF]/8 rounded-full blur-2xl"
+        animate={{
+          x: [0, -50, 0],
+          y: [0, 30, 0],
+          scale: [1, 0.9, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+        style={{
+          bottom: "20%",
+          left: "5%",
+        }}
+      />
+
+      {/* Main content with glass container */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 bg-black/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl shadow-[#2EB9DF]/5"
+      >
+        <div className="text-balance relative z-20 mx-auto mb-6 max-w-4xl text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl md:text-6xl font-bold text-white mb-4"
+          >
+            Features & Benefits
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="max-w-2xl text-lg md:text-xl text-center mx-auto text-white/70 leading-relaxed"
+          >
+            Discover powerful AI tools that simplify complex tasks and help you work{" "}
+            <span className="text-[#2EB9DF] font-semibold">smarter, not harder</span>—designed specifically for people who want{" "}
+            <span className="text-[#9E00FF] font-semibold">results without the tech jargon</span>.
+          </motion.p>
+        </div>
       <div className="mt-20  grid cols-1 lg:grid-cols-5 gap-4 auto-rows-[25rem] max-w-3xl mx-auto lg:max-w-none">
         <Card className="flex flex-col relative justify-between lg:col-span-2">
           <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/3">
@@ -120,7 +178,8 @@ export function Features() {
             </div>
           </CardSkeletonBody>
         </Card>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
@@ -415,7 +474,7 @@ export const Highlight = ({
 const CARDS = [
   {
     id: 0,
-    name: "Sarah Johnson",
+    name: "Nathan Gary",
     designation: "Marketing Director",
     content: (
       <p>

@@ -15,3 +15,44 @@ body {
     --radius: 0.5rem;
   }
 }
+
+/* Custom animations for enhanced hero section */
+@layer utilities {
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 3s ease infinite;
+  }
+  
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+  
+  /* Enhanced glow effects */
+  .glow-effect {
+    filter: drop-shadow(0 0 20px rgba(46, 185, 223, 0.3)) 
+            drop-shadow(0 0 40px rgba(158, 0, 255, 0.2));
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
