@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 import { IconArrowRight } from "@/icons/arrow-right";
 
 const FAQs = [
@@ -75,7 +74,7 @@ export function FrequentlyAskedQuestions() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl md:text-6xl font-bold text-white mb-4"
           >
-            Let's Answer Your Questions
+            Let&apos;s Answer Your Questions
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -84,9 +83,9 @@ export function FrequentlyAskedQuestions() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-2xl text-lg md:text-xl text-center mx-auto text-white/70 leading-relaxed"
           >
-            Got questions about our AI course? We've answered the most common questions to help you understand how our program will help you{" "}
-            <span className="text-[#2EB9DF] font-semibold">harness the power of AI</span> without{" "}
-            <span className="text-[#9E00FF] font-semibold">technical expertise</span>.
+                         Got questions about our AI course? We&apos;ve answered the most common questions to help you understand how our program will help you{" "}
+             <span className="text-[#2EB9DF] font-semibold">harness the power of AI</span> without{" "}
+             <span className="text-[#9E00FF] font-semibold">technical expertise</span>.
           </motion.p>
         </div>
         
